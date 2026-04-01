@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Therapist</title>
+</head>
+<body>
+
+<h1>AI Therapist Chat</h1>
+
+<input type="text" id="userInput" placeholder="Type your message">
+<button onclick="sendMessage()">Send</button>
+
+<p id="response"></p>
+
+<script>
+async function sendMessage() {
+    let input = document.getElementById("userInput").value;
+
+    let res = await fetch("http://127.0.0.1:8000/chat?msg=" + input);
+    let data = await res.json();
+
+    document.getElementById("response").innerText = data.reply;
+}
+</script>
+
+</body>
+</html>
